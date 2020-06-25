@@ -11,4 +11,4 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
 // Chequear el carrito
-export const CKECKOUT_CART = 'CHECKOUT_CART';
+export const CHECKOUT_CART = 'CHECKOUT_CART';

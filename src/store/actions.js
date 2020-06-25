@@ -22,7 +22,6 @@ export const removeFromCart = bikeId => ({
 
 export const ckeckoutCart = bikes => ({
     type: TYPES.CKECKOUT_CART,
-    bikes,
-});
+  });
 
 
