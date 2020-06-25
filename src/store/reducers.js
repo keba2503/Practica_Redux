@@ -7,57 +7,63 @@ const initialState = {
     cart: []
 }
 
-export default function (state = initialState, action) {
+const updateitem = (items, updatedId, update) => {
+    return items.map(item => {
+        if(item.id === updatedId){
+            return {
+                ...item,
+                ...update(item),
+            };
+        }
+        return item;
+    });
+};
+
+
+export function bikes(state = initialState.bikes, action) {
     switch (action.type) {
         case TYPES.SET_BIKES:
-            return {
-                ...state,
-                bikes: action.bikes,
-            };
-
-
-        case TYPES.SET_FILTERS:
-            return {
-                ...state,
-                filter: action.filter,
-            };
+            return  action.bikes;           
 
         case TYPES.ADD_TO_CART:
-            return {
-                ...state,
-                bikes: state.bikes.map(bike => {
-                    if(bike.id === action.bikeId){
-                        return {
-                            bike,
-                            stock: bike.stock -1,
-                        };
-                    }
-                    return bike;
-                }),
-                cart: [...state.cart, action.bikeId]
-            };
+            return  updateitem(state.bikes, action.bikeId, bike => ({
+                    stock: bike.stock - 1,
+                }));
+              
         case TYPES.REMOVE_FROM_CART:
-            return {
-                ...state,
-                bikes: state.bikes.map(bike => {
-                    if(bike.id === action.bikeId){
-                        return {
-                            ...bike,
-                            stock: bike.stock -1,
-                        };
-                    }                
-                        return bike;
-                }),                
-                cart: state.cart.filter(b => b !== action.bikeId)
-            }
-
-        case TYPES.CHECKOUT_CART:
-            return {
-                ...state,
-                cart: initialState.cart,
-            };
+            return updateitem(state.bikes, action.bikeId, bike => ({
+                    stock: bike.stock + 1,
+            }));
         default:
             return state;
     }
 }
+
+export function filter(state = initialState.filter, action) {
+    switch (action.type) {
+        case TYPES.SET_FILTERS:
+            return action.filter;
+
+        default:
+            return state;
+    }
+}
+
+export function cart(state = initialState.cart, action) {
+    switch (action.type) {
+         
+        case TYPES.ADD_TO_CART:
+            return [...state, action.bikeId];
+
+        case TYPES.REMOVE_FROM_CART:
+            return state.filter(bike => bike !== action.bikeId);
+            
+        case TYPES.CHECKOUT_CART:
+            return initialState.cart;
+
+            default:
+            return state;
+    }
+}
+
 
