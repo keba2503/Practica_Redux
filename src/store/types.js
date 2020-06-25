@@ -8,7 +8,7 @@ export const SET_FILTERS = 'SET-FILTERS';
 export const ADD_TO_CART = 'ADD_TO_CART';
 
 //ELIMINAR UNA BICI DEL CARRITO
-export const REMOVE_TO_CART 'REMOVE_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
 // Chequear el carrito
 export const CKECKOUT_CART = 'CHECKOUT_CART';
