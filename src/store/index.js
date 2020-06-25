@@ -1,4 +1,6 @@
-import {combineReducers} from 'redux';
+import {createStore, combineReducers} from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 
 import {bikes, filter, cart } from './reducers';
 
@@ -7,3 +9,7 @@ export const reducer = combineReducers({
     filter,
     cart,
 });
+
+
+export const store = createStore(reducer, composeWithDevTools());
+
