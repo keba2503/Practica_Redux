@@ -1,6 +1,6 @@
 import { BIKE_TYPES } from '../constants';
 
-const bikes = [
+ const bikes = [
   {
     id: '1',
     image: 'full_exceed-cf-sl-7_c1189.png',

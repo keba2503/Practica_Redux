@@ -10,6 +10,9 @@ export const reducer = combineReducers({
     cart,
 });
 
+export function configureStore(preloadedState){
+    const store = createStore(reducer, preloadedState, composeWithDevTools())
+    return store;
+}
 
-export const store = createStore(reducer, composeWithDevTools());
 

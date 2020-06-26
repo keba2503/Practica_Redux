@@ -26,12 +26,12 @@ export function bikes(state = initialState.bikes, action) {
             return  action.bikes;           
 
         case TYPES.ADD_TO_CART:
-            return  updateitem(state.bikes, action.bikeId, bike => ({
+            return  updateitem(state, action.bikeId, bike => ({
                     stock: bike.stock - 1,
                 }));
               
         case TYPES.REMOVE_FROM_CART:
-            return updateitem(state.bikes, action.bikeId, bike => ({
+            return updateitem(state, action.bikeId, bike => ({
                     stock: bike.stock + 1,
             }));
         default:

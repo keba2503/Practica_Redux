@@ -4,8 +4,24 @@ import ReactDOM from 'react-dom';
 import Root from './components/Root';
 import './index.css';
 
-import {store} from './store';
+import { configureStore } from './store';
+import BikesService from './services/Bikes';
+import { 
+    setBikes, 
+    setFilter, 
+    addToCart, 
+    removeFromCart, 
+    ckeckoutCart 
+} from './store/actions';
+import {BIKE_FILTERS} from './constants'
 
-console.log(store);
+const store = configureStore()
+store.dispatch(setBikes(BikesService.getAllBikes()));
+store.dispatch(setFilter(BIKE_FILTERS.MOUNTAIN));
+store.dispatch(addToCart('1', 2));
+store.dispatch(removeFromCart('1', 2));
+store.dispatch(addToCart('2', 3));
+store.dispatch(addToCart('2', 1));
+store.dispatch(ckeckoutCart())
 
 ReactDOM.render(<Root />, document.getElementById('root'));
