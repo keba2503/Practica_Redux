@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
-import BikesList from './BikesList'
+import BikesList from './BikesList';
 
+import {addToCart} from '../../store/actions';
 import {getVisibleBikes} from '../../store/selectors'
 
 function mapStateToProps(state, ownProps){ 
@@ -10,4 +11,10 @@ function mapStateToProps(state, ownProps){
     };
 }
 
-export default connect(mapStateToProps)(BikesList);
+function mapDispatchToProps(dispatch, ownProps) {
+    return{
+        addToCart: bikeId => dispatch(addToCart(bikeId)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BikesList);

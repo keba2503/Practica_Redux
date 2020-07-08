@@ -27,12 +27,12 @@ export function bikes(state = initialState.bikes, action) {
 
         case TYPES.ADD_TO_CART:
             return  updateitem(state, action.bikeId, bike => ({
-                    stock: bike.stock - 1,
+                    stock: bike.stock - action.quantity,
                 }));
               
         case TYPES.REMOVE_FROM_CART:
             return updateitem(state, action.bikeId, bike => ({
-                    stock: bike.stock + 1,
+                    stock: bike.stock + action.quantity,
             }));
         default:
             return state;
@@ -51,19 +51,22 @@ export function filter(state = initialState.filter, action) {
 
 export function cart(state = initialState.cart, action) {
     switch (action.type) {
-         
-        case TYPES.ADD_TO_CART:
-            return [...state, action.bikeId];
-
-        case TYPES.REMOVE_FROM_CART:
-            return state.filter(bike => bike !== action.bikeId);
-            
-        case TYPES.CHECKOUT_CART:
-            return initialState.cart;
-
-            default:
-            return state;
+      case TYPES.ADD_TO_CART:
+        return {
+          ...state,
+          [action.bikeId]: (state[action.bikeId] || 0) + action.quantity,
+        };
+  
+      case TYPES.REMOVE_FROM_CART:
+        const { [action.bikeId]: _, ...newCart } = state;
+        return newCart;
+  
+      case TYPES.CHECKOUT_CART:
+        return initialState.cart;
+  
+      default:
+        return state;
     }
-}
+  }
 
 

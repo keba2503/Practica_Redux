@@ -15,3 +15,19 @@ export function getVisibleBikes(state) {
  return visibleBikes.map(bike => ({...bike, hasStock: bike.stock > 0}));
 }
 
+export function getTotalCartItems(state) {
+    const cart = getCart(state);
+    return Object.values(cart).reduce((acc, quantity) => acc + quantity, 0);
+  }
+
+  export function getCartItems(state) {
+    const bikes = getBikes(state);
+    const cart = getCart(state);
+    return Object.entries(cart).map(entry => {
+      const [bikeId, quantity] = entry;
+      const bike = bikes.find(bike => bike.id === bikeId);
+      return { ...bike, quantity, totalPrice: bike.price * quantity };
+    });
+  }
+
+  
