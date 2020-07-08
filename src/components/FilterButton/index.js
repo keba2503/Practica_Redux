@@ -1,9 +1,6 @@
 
 import { connect } from 'react-redux';
-
-
 import FilterButton from './FilterButton';
-
 import { setFilter } from '../../store/actions'
 import {isFilterActive} from '../../store/selectors';
 
