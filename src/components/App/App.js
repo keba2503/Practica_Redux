@@ -31,8 +31,7 @@ class App extends Component {
               render={props => (
                 <Cart
                   {...props}
-                  removeFromCart={() => {}}
-                  // checkoutCart={() => {}}
+                 
                 />
               )}
             />
