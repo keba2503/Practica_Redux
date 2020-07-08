@@ -4,7 +4,7 @@ import * as TYPES from './types';
 const initialState = {
     bikes: [],
     filter: BIKE_FILTERS.ALL,
-    cart: []
+    cart: {},
 }
 
 const updateitem = (items, updatedId, update) => {

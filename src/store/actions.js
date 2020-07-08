@@ -22,7 +22,7 @@ export const removeFromCart = (bikeId, quantity = 1) => ({
     quantity,
 });
 
-export const ckeckoutCart = bikes => ({
+export const checkoutCart = () => ({
     type: TYPES.CHECKOUT_CART,
   });
 

@@ -32,7 +32,7 @@ class App extends Component {
                 <Cart
                   {...props}
                   removeFromCart={() => {}}
-                  checkoutCart={() => {}}
+                  // checkoutCart={() => {}}
                 />
               )}
             />

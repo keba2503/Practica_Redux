@@ -57,6 +57,7 @@ export default function Cart({
   items,
   removeFromCart,
   checkoutCart,
+ 
 }) {
   return (
     <div className={classNames('cart', className)}>
