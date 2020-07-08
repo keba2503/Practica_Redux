@@ -11,7 +11,6 @@ export default function BikesStore({
   className,
   filtersClassName,
   listClassName,
-  bikes,
   bikesFilter,
   setBikesFilter,
   addToCart,
@@ -25,7 +24,6 @@ export default function BikesStore({
       />
       <BikesList
         className={listClassName}
-        bikes={bikes}
         addToCart={addToCart}
       />
     </div>
