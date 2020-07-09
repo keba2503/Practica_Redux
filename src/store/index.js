@@ -2,13 +2,9 @@ import {createStore, combineReducers} from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 
-import {bikes, filter, cart } from './reducers';
+import * as reducers from'./reducers';
 
-export const reducer = combineReducers({
-    bikes,
-    filter,
-    cart,
-});
+export const reducer = combineReducers(reducers);
 
 export function configureStore(preloadedState){
     const store = createStore(reducer, preloadedState, composeWithDevTools())

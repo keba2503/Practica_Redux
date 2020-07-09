@@ -31,3 +31,4 @@ export function getTotalCartItems(state) {
   }
 
   
+  export const getUi = state => state.ui;

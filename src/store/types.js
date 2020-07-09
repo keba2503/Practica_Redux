@@ -1,5 +1,8 @@
 // crear las bicis en el store
-export const SET_BIKES = 'SET_BIKES';
+export const FETCH_BIKES_REQUEST = 'FETCH_BIKES_REQUEST';
+export const FETCH_BIKES_SUCCESS = 'FETCH_BIKES_SUCCESS';
+export const FETCH_BIKES_FAILURE = 'FETCH_BIKES_FAILURE';
+
 
 //Ejecutar el filtro
 export const SET_FILTERS = 'SET-FILTERS';

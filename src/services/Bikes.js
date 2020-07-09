@@ -1,5 +1,6 @@
 import { BIKE_TYPES } from '../constants';
 
+
  const bikes = [
   {
     id: '1',
@@ -35,6 +36,16 @@ import { BIKE_TYPES } from '../constants';
   },
 ];
 
+const TIMEOUT = 1500;
+
 export default {
-  getAllBikes: () => bikes,
+  getAllBikes: () => 
+new Promise((resolve, reject) => {
+setTimeout(() => {
+  if (Math.random() > 0.75) {
+    reject(new Error('Network Error.'));
+  }
+  resolve(bikes);
+}, TIMEOUT);
+}),
 };
