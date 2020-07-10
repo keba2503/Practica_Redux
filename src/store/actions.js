@@ -1,4 +1,6 @@
 import * as TYPES from './types';
+import BikesService from '../services/Bikes';
+
 
 
 export const fetchBikesRequest = () => ({
@@ -16,6 +18,16 @@ export const fetchBikesSucess = bikes => ({
     type: TYPES.FETCH_BIKES_SUCCESS,
     bikes,
 });
+
+export const fetchBikes = () => async (dispatch, getState, extraArgument) => {
+    dispatch(fetchBikesRequest());
+    try {
+        const bikes = await BikesService.getAllBikes();
+        dispatch(fetchBikesSucess(bikes));
+    } catch (error) {
+        dispatch(fetchBikesFailure(error));
+    }
+};
 
 export const setFilter = filter => ({
     type: TYPES.SET_FILTERS,
